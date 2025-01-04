@@ -1,0 +1,67 @@
+<!--<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-back-button (click)="goBck()" slot="start"  >
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-back-button>
+    <ion-title>
+      My Events
+    </ion-title>
+    <ion-button *ngIf="but" (click)="changeDisplay()" class="change" fill="clear" slot="end"><ion-icon class="icon" [name]="y"></ion-icon></ion-button>
+    <ion-button *ngIf="!but" (click)="changeDisplay()" class="change" fill="clear" slot="end"><ion-icon class="icon" [name]="x"></ion-icon></ion-button>
+  </ion-toolbar>
+</ion-header>-->
+
+<ion-content [fullscreen]="true" class="myevbtn1">
+  <!--<ion-button (click)="goBack()">
+       <ion-icon name="arrow-back-outline">
+
+       </ion-icon></ion-button>-->
+
+  <ion-item class="search">
+    <ion-input placeholder="Search" (ionInput)="checks()" [(ngModel)]="Search"></ion-input>
+  <ion-select slot="end" (ionChange)="checks()" [(ngModel)]="selected">
+    <ion-select-option>all</ion-select-option>
+    <ion-select-option>name</ion-select-option>
+    <ion-select-option>club-name</ion-select-option>
+    <ion-select-option>date</ion-select-option>
+  </ion-select>
+  </ion-item>
+  <ion-button (click)= "oldGen()"expand="block" class="myevbtn" color="dark">old events</ion-button>
+  <ion-button (click)= "newGen()" expand="block" class="myevbtn" color="dark">new events</ion-button>
+  <ion-button (click)= "allGen()" expand="block" class="myevbtn" color="dark">all events</ion-button>
+  <div *ngIf="!display">
+  <div  *ngFor="let product of filteredRecords; let i=index; ">
+    <ion-button (click)="goToDetailss(product)" fill="clear">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="title">{{product.name}}</ion-card-title>
+      <ion-card-subtitle class="subtitle">{{product.club_name}}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-img [src]="product.photoUrl"></ion-img>   
+      <ion-label>{{ds.date[i]}}</ion-label><br>
+      <ion-label>{{ds.time[i]}}</ion-label><br>
+
+    </ion-card-content>
+  </ion-card>
+</ion-button>
+  </div>
+  </div>
+  <div *ngIf="display">
+    <div *ngFor="let product of filteredRecords; let i=index"  >
+      <ion-button (click)="goToDetailss(product)" fill="clear">
+  
+      <ion-item   lines="inset" class="boxes" >
+          <ion-avatar class="av" slot="start">
+            <ion-img [src]="product.photoUrl"></ion-img>   
+          </ion-avatar>
+        <ion-label  class="info">
+         {{product.name}} {{product.club_name}}
+        </ion-label>    
+      </ion-item> 
+   
+      </ion-button>
+      </div>
+  
+    </div>
+</ion-content>

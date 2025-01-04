@@ -1,17 +1,119 @@
-<ion-header [translucent]="true">
+<div *ngIf="loaded">
   <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
+    <ion-title *ngIf="!admins">Requests</ion-title>
+    <ion-title *ngIf="admins">Users</ion-title>
   </ion-toolbar>
-</ion-header>
+</div>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="req">
+  <div *ngIf="admins">
+    <ion-item class="search">
+      <ion-input placeholder="Search" (ionInput)="checks()" [(ngModel)]="Search"></ion-input>
+    <ion-select slot="end" (ionChange)="checks()" [(ngModel)]="selected">
+      <ion-select-option>all</ion-select-option>
+      <ion-select-option>name</ion-select-option>
+      <ion-select-option>club-name</ion-select-option>
+      <ion-select-option>type</ion-select-option>
+      <ion-select-option>major</ion-select-option>
+    </ion-select>
+    </ion-item>
+    <ion-item *ngFor="let x of filteredRecords" >
+      <ion-label>{{x.name}}</ion-label>
+      <ion-label>{{x.field}}</ion-label>
+      <ion-button (click)="remove(x)">remove</ion-button>
+    </ion-item>
+  </div>
+  <div *ngIf="!admins">
+    <div *ngIf="leader">
+      <div *ngIf="loaded">
+        <ion-segment (ionChange)="segmentChange($event)" value="default">
+          <ion-segment-button value="club">
+            <ion-label>Club Request</ion-label>
+          </ion-segment-button>
+        
+          <div *ngIf="club">
+              <h2 *ngIf="loads">{{msg3}}</h2>
+            <ion-item *ngFor="let x of waitingStudents; let i=index;">
+              <ion-label>
+                {{x.name}}  
+              </ion-label><br> 
+              <ion-label>
+                {{x.field}} Major
+              </ion-label>
+              <ion-button (click)="clubRequests(x.name)" fill="clear">
+             view request
+              </ion-button>
+            </ion-item>
+          </div>
+          <ion-segment-button value="events">
+            <ion-label>Event Requests</ion-label>
+          </ion-segment-button>
+      
+          <div *ngIf="events" >
+              <h2 *ngIf="loads2">{{msg4}}</h2>
+            <ion-list>
+              <!-- Iterate over the entries in resulted object -->
+              <ng-container *ngFor="let mapItem of maps">
+                <ion-item>
+                  <ion-label>{{ mapItem.record.name}}</ion-label>
+                  <ion-list>
+                    <ng-container>
+                      <ion-item>
+                        <ion-label>{{ mapItem.key }}</ion-label>
+                      </ion-item>
+                    </ng-container>
+                  </ion-list>
+                  <ion-button (click)="eventRequests(mapItem.record.name,mapItem.key)">View Request</ion-button>
+                </ion-item>
+              </ng-container>
+            </ion-list>
+          </div>
+        </ion-segment>
+        </div>
+    </div>
+    
+<div *ngIf="student">
+<div *ngIf="loaded">
+  <ion-segment (ionChange)="segmentChange2($event)" value="default">
+    <ion-segment-button value="club">
+      <ion-label>Club Request</ion-label>
+    </ion-segment-button>
+  
+    <div *ngIf="studentClub">
+      <h2 *ngIf="emptyStatus">{{msg}}</h2>
+      <div *ngIf="otherStatus">
+        <h1 *ngIf="otherStatus">{{msg}}</h1>
+        <ion-button (click)="cancelRequest2()" *ngIf="pendBtn">Cancel Request</ion-button>
+        <ion-button (click)="clear2()" *ngIf="clearBtn">Clear</ion-button>
+      </div>
+    </div>
+    <ion-segment-button value="events">
+      <ion-label>Event Requests</ion-label>
+    </ion-segment-button>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+    <div *ngIf="studentEvents" >
+      <ion-list>
+        <!-- Iterate over the entries in resulted object -->
+        <h2>{{msg2}}</h2>
+        <ng-container *ngFor="let item of reqs; let i=index;">
+
+          <ion-item>
+            <ion-label>{{ item.event}}</ion-label>
+            <ion-list>
+              <ng-container>
+                <ion-item>
+                  <ion-label>{{ item.status }}</ion-label>
+                </ion-item>
+              </ng-container>
+            </ion-list>
+            <ion-button (click)="cancelRequest(item.event)" *ngIf="isPending[i]">Cancel Request</ion-button>
+            <ion-button (click)="clear(item.event)" *ngIf="isFinish[i]">Clear</ion-button>
+          </ion-item>
+        </ng-container>
+      </ion-list>
+    </div>
+  </ion-segment>
+</div>
+</div>
+</div>
 </ion-content>

@@ -1,0 +1,38 @@
+<ion-content class="background" [fullscreen]="true" ion-fixed class="login">
+  <section class="log">
+    <ion-img [src]="url" class="logo"></ion-img>
+    <ion-label class="note">Sign in user</ion-label><br>
+
+    <form [formGroup]="signInForm" (ngSubmit)="VerifyUser()" class="form">
+      <ion-item class="input-item">
+        <ion-label class="label" position="floating">Email</ion-label>
+        <ion-input (click)="sub()" type="email" formControlName="email" class="input"></ion-input>
+      </ion-item>
+      <div *ngIf="submitted && f['email'].errors" class="error-container">
+        <div class="error" *ngIf="f['email'].errors['required']">
+          *email is required
+        </div>
+        <div class="error" *ngIf="f['email'].errors['email']">
+          *wrong email
+        </div>
+      </div>
+
+      <ion-item class="input-item">
+        <ion-label class="label" position="floating">Password </ion-label>
+        <ion-input (click)="subps()" type="password" formControlName="password" class="input"></ion-input>
+      </ion-item>
+      <div *ngIf="submitted2 && f['password'].errors" class="error-container">
+        <div class="error" *ngIf="f['password'].errors['required']">
+          *password is required
+        </div>
+        <div class="error" *ngIf="f['password'].errors">
+          *password must be at least 8 characters
+        </div>
+      </div>
+
+      <ion-button class="button1" fill="clear" [disabled]="!signInForm.valid" type="submit">Sign
+        in</ion-button>
+      <ion-button class="note" fill="clear">Forgot password?</ion-button>
+    </form>
+  </section>
+</ion-content>

@@ -1,0 +1,19 @@
+
+<ion-content class="background" [fullscreen]="true" class="profile1">
+<div *ngIf="edits">ss </div>
+<div *ngIf="!edits">
+
+
+  <!--<ion-button (click)="edit()">edit profile</ion-button>-->
+  <div class="profile-container">
+    <div class="profile-image">
+    </div>
+    <div class="profile-details" *ngFor="let x of userRecord">
+      <img [src]="x.photoUrl" alt="Profile Image">
+      <h2> {{x.name}}</h2>
+      <p>{{x.field}}</p>
+      <p>{{x.email}}</p>
+    </div>
+  </div>
+</div>
+</ion-content>

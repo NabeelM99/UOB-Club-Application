@@ -1,17 +1,177 @@
-<ion-header [translucent]="true">
+<!--<ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      Events
     </ion-title>
+    <div slot="end" *ngIf="!admins">
+      <div *ngIf="loaded">
+    <ion-button *ngIf="but" (click)="changeDisplay()" class="change" fill="clear" slot="end"><ion-icon class="icon" [name]="y"></ion-icon></ion-button>
+    <ion-button *ngIf="!but" (click)="changeDisplay()" class="change" fill="clear" slot="end"><ion-icon class="icon" [name]="x"></ion-icon></ion-button>
+    </div></div>
   </ion-toolbar>
-</ion-header>
+</ion-header>-->
+<ion-content [fullscreen]="true" class="backgimg">
+  <div *ngIf="admins">
+    <section class="log">
+      <ion-label class="note">Add New User</ion-label>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+      <form [formGroup]="signInForm" (ngSubmit)="addEvent()" class="form">
+        <ion-item class="input-item">
+          <ion-label class="label" position="floating">User Name</ion-label>
+          <ion-input (input)="subName()" type="text" formControlName="name" class="input"></ion-input>
+        </ion-item>
+        <div *ngIf="submitted && f['name'].errors" class="error-container">
+          <div class="error" *ngIf="f['name'].errors['required']">
+            *name is required
+          </div>
+          <div class="error" *ngIf="f['name']">
+            *name is short
+          </div>
+        </div>
+        <ion-item class="input-item">
+          <ion-label class="label" position="floating">email</ion-label>
+          <ion-input (input)="subEmail()" type="email" formControlName="email" class="input"></ion-input>
+        </ion-item>
+        <div *ngIf="submitted4 && f['email'].errors" class="error-container">
+          <div class="error" *ngIf="f['email'].errors['required']">
+            *email is required
+          </div>
+          <div class="error" *ngIf="f['email'].errors['email']">
+            *email is incorrect
+          </div>
+        </div>
+        <ion-item class="input-item">
+          <ion-label class="label" position="floating">password</ion-label>
+          <ion-input (input)="subPassword()" type="password" formControlName="password" class="input"></ion-input>
+        </ion-item>
+        <div *ngIf="submitted2 && f['password'].errors" class="error-container">
+          <div class="error" *ngIf="f['password'].errors['required']">
+            *password is required
+          </div>
+          <div class="error" *ngIf="f['password']">
+            *password is short
+          </div>
+        </div>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+        <ion-item class="input-item">
+          <ion-label class="label" position="floating">User Type</ion-label>
+          <ion-select (ionChange)="subType()" formControlName="type">
+            <ion-select-option value="student">Student</ion-select-option>
+            <ion-select-option value="leader">Leader</ion-select-option>
+            <ion-select-option value="admin">Admin</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <div *ngIf="submitted9 && f['type'].errors" class="error-container">
+          <div class="error" *ngIf="f['type'].errors['required']">
+            *type is required
+          </div>
+        </div>
+        <ion-item class="input-item">
+          <ion-label class="label" position="floating">Major</ion-label>
+          <ion-select (ionChange)="submajor()" formControlName="major">
+            <ion-select-option value="it-info tech" disabled>Information Technology</ion-select-option>
+            <ion-select-option value="it-Cyber Security">Cyber Security</ion-select-option>
+            <ion-select-option value="it-Computer Science">Computer Science</ion-select-option>
+            <ion-select-option value="it-Information Security">Information Security</ion-select-option>
+            <ion-select-option value="it-Network Engineering">Network Engineering</ion-select-option>
+            <ion-select-option value="it-Software Engineering">Software Engineering</ion-select-option>
+            <ion-select-option value="it-Cloud Computing">Cloud Computing</ion-select-option>
+            <ion-select-option value="it-Computer Engineering">Computer Engineering</ion-select-option>
+            <ion-select-option value="ee-Engineering" disabled>Engineering</ion-select-option>
+            <ion-select-option value="ee-Mechanical Engineering">Mechanical Engineering</ion-select-option>
+            <ion-select-option value="ee-Civil Engineering">Civil Engineering</ion-select-option>
+            <ion-select-option value="ee-Electrical Engineering">Electrical Engineering</ion-select-option>
+            <ion-select-option value="ee-Chemical Engineering">Chemical Engineering</ion-select-option>
+            <ion-select-option value="ee-Biomedical Engineering">Biomedical Engineering</ion-select-option>
+            <ion-select-option value="ee-Aerospace Engineering">Aerospace Engineering</ion-select-option>
+            <ion-select-option value="ee-Industrial Engineering">Industrial Engineering</ion-select-option>
+            <ion-select-option value="ee-Architectural Engineering">Architectural Engineering</ion-select-option>
+            <ion-select-option value="bu-Business" disabled>Business</ion-select-option>
+            <ion-select-option value="bu-Accounting">Accounting</ion-select-option>
+            <ion-select-option value="bu-Finance">Finance</ion-select-option>
+            <ion-select-option value="bu-Marketing">Marketing</ion-select-option>
+            <ion-select-option value="bu-Management">Management</ion-select-option>
+            <ion-select-option value="bu-Entrepreneurship">Entrepreneurship</ion-select-option>
+            <ion-select-option value="bu-International Business">International Business</ion-select-option>
+            <ion-select-option value="bu-Economics">Economics</ion-select-option>
+            <ion-select-option value="bu-Human Resources">Human Resources</ion-select-option>
+
+
+            <!-- Add more majors here -->
+
+
+          </ion-select>
+        </ion-item>
+        <div *ngIf="submitted3 && f['major'].errors" class="error-container">
+          <div class="error" *ngIf="f['major'].errors['required']">
+            *major is required
+          </div>
+        </div>
+
+        <ion-item class="input-item">
+          <ion-label class="label" floating>Photo</ion-label>
+          <input type="file" (change)="handleFileInput($event)" class="input-file" formControlName="photo">
+        </ion-item>
+        <div *ngIf="submitted5 && f['photo'].errors" class="error-container">
+          <div class="error" *ngIf="f['photo'].errors['required']">
+            *Photo is required
+          </div>
+        </div>
+
+        <ion-button class="button" fill="clear" [disabled]="!signInForm.valid" type="submit">Add User</ion-button>
+      </form>
+    </section>
+  </div>
+
+  <div *ngIf="!admins">
+    <div *ngIf="loaded">
+      <ion-item class="search">
+        <ion-input placeholder="Search" (ionInput)="checks()" [(ngModel)]="Search"><ion-select slot="end"
+            (ionChange)="checks()" [(ngModel)]="selected">
+            <ion-select-option>all</ion-select-option>
+            <ion-select-option>name</ion-select-option>
+            <ion-select-option>club-name</ion-select-option>
+            <ion-select-option>date</ion-select-option>
+          </ion-select>
+        </ion-input>
+        <ion-button *ngIf="leader" (click)="goToCreatedEvents()" expand="block" class="eventbtn">Created
+          Events</ion-button>
+        <ion-button *ngIf="!leader" (click)="goToDetails2()" expand="block" class="eventbtn">My Events</ion-button>
+      </ion-item>
+    </div>
+
+
+    <div *ngIf="!display">
+      <div *ngFor="let product of filteredRecords; let i=index; ">
+        <ion-button (click)="goToDetails(product,i)" fill="clear">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title class="title">{{product.name}}</ion-card-title>
+              <ion-card-subtitle class="subtitle">{{product.club_name}}</ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-img [src]="product.photoUrl"></ion-img>
+              <p>Date: {{ ds.date[i] }}</p>
+              <p>Time: {{ ds.time[i] }}</p>
+            </ion-card-content>
+          </ion-card>
+        </ion-button>
+      </div>
+    </div>
+
+    <div *ngIf="display">
+      <div *ngFor="let product of filteredRecords; let i=index">
+        <ion-button (click)="goToDetails(product,i)" fill="clear">
+          <ion-item lines="inset" class="boxes">
+            <ion-avatar class="av" slot="start">
+              <ion-img [src]="product.photoUrl"></ion-img>
+            </ion-avatar>
+            <ion-label class="info">
+              {{product.name}} - {{product.club_name}}
+            </ion-label>
+          </ion-item>
+        </ion-button>
+      </div>
+    </div>
+  </div>
 </ion-content>

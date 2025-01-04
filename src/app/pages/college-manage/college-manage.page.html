@@ -1,0 +1,21 @@
+<ion-content [fullscreen]="true" class="backgimgg">
+  <h2  class="welcome-title">Welcome {{college}} Students!</h2>
+  <ion-button  (click)="openModal()" color="dark" class="colmanbtn"> Add Events </ion-button>
+  <div *ngFor="let product of events ; let i=index;">
+ 
+    <ion-button (click)="goToDetails(product,i)" fill="clear">
+      <ion-card>
+        <ion-card-header>
+
+          <ion-card-title class="title">{{ product.name }}</ion-card-title>
+          <ion-card-subtitle class="subtitle">{{ product.club_name }}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-img src="{{product.photoUrl}}"></ion-img>
+          <ion-label>{{ ds.date[i] }}</ion-label><br>
+          <ion-label>{{ ds.time[i] }}</ion-label><br>
+        </ion-card-content>
+      </ion-card>
+    </ion-button>
+  </div>
+</ion-content>

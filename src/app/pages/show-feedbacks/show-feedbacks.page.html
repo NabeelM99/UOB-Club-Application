@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar><ion-buttons>    <ion-back-button>back</ion-back-button>
+  </ion-buttons>
+    <ion-title>Feedbacks</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="feed">
+  <div *ngFor="let x of users">
+  <ion-item>
+    <ion-label>
+      {{x.name}}
+    </ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>
+      <div style="display: flex; align-items: center;">
+        <ng-container *ngFor="let star of datas.Rate; let i=index">
+          <ion-icon class="icon" name="{{star.Name}}" [style.color]="i <= x.feedbacks[0].rating ? 'rgb(231, 231, 186)' : 'transparent'"></ion-icon>
+        </ng-container>
+        <small style="margin-left: 5px;">{{x.feedbacks[0].feedback}}</small>
+      </div>
+    </ion-label>
+  </ion-item>
+</div>
+</ion-content>

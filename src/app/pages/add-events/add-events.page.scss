@@ -1,0 +1,164 @@
+ion-content,
+ion-button,
+ion-label,
+ion-item,
+ion-select,
+ion-input,
+h1,
+h2,
+p {
+  color: #000000 !important;
+}
+
+.container{
+  color: #000000 !important;
+}
+
+.form-container {
+  background: linear-gradient(to bottom, rgb(255, 255, 255), rgb(199, 196, 196));
+}
+
+input-item ion-label,
+.input-item ion-input {
+  color: black; /* Set the text color */
+}
+
+.button {
+  background-color: rgb(0, 0, 0); /* Set the button background color */
+   color: white;
+   margin-left: 20px;
+}
+
+
+.background {
+  background-color: #302a2a;
+  color: #302a2a;
+}
+
+.color {
+  color: #333;
+}
+
+.log {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.logo {
+  width: 150px;
+  height: 150px;
+  margin-bottom: 20px;
+}
+
+.form {
+  width: 300px;
+  margin-bottom: 20px;
+  border: 2px solid #ccc;
+  padding: 20px;
+
+}
+
+.input-item {
+  margin-bottom: 16px;
+}
+
+.label {
+  color: #666;
+}
+
+.input {
+  padding: 10px;
+}
+
+.error-container {
+  margin-top: 8px;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.button {
+  margin-bottom: 16px;
+}
+
+.note {
+  margin-bottom: 20px;
+}
+
+.form {
+  width: 300px;
+  margin-bottom: 20px;
+}
+
+.input-item {
+  margin-bottom: 16px;
+}
+
+.label {
+  color: #666;
+}
+
+.input {
+  padding: 10px;
+}
+
+.input-hover {
+  border-color: #999;
+}
+
+.error-container {
+  margin-top: 8px;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.button {
+  margin-bottom: 16px;
+}
+
+.button-hover {
+  background-color: #ccc;
+  color: #333;
+}
+
+.note {
+  font-size: 12px;
+}
+
+ion-select-option[disabled] {
+  font-weight: bolder;
+  color: #999999;
+}
+
+/* Mouse movement effects */
+.input:hover {
+  border-color: #999;
+}
+
+.button:hover {
+  background-color: #ccc;
+  color: #333;
+}
+
+.button:active {
+  background-color: #999;
+  color: #fff;
+}
+
+.input-item:hover .error-container {
+  display: none;
+}

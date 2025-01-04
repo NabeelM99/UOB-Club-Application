@@ -1,0 +1,92 @@
+ion-content,
+ion-label,
+ion-button,
+ion-input {
+  color: #000000 !important;
+}
+
+ion-header {
+  .background {
+    background-color: #fff; // Off-white background color for header
+  }
+
+  .color {
+    color: #000; // Black text color for header
+  }
+}
+
+.button1{
+  --background: grey;
+}
+
+.login {
+    --background: linear-gradient(to bottom, rgb(218, 218, 218), rgb(255, 255, 255));
+}
+
+ion-content {
+  .background {
+    background-color: #f0f0f0; // Light gray background color for content
+  }
+
+  .color {
+    color: #000; // Black text color for content
+  }
+}
+
+.log {
+  width: 100%;
+  position: fixed; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.logo {
+  width: 150px; // Adjust the width as needed
+  height: auto;
+  margin-bottom: 20px; // Add margin bottom for spacing
+}
+
+.note {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #666; // Dark gray text color for note
+}
+
+.form {
+  width: 90%;
+  max-width: 400px; // Adjust the maximum width as needed
+}
+
+.input-item {
+  margin-bottom: 20px;
+}
+
+.label {
+  color: #666; // Dark gray label color
+  border-bottom: 2px ;
+}
+
+
+
+.error-container {
+  margin-top: 5px;
+}
+
+.error {
+  color: red; // Red color for error messages
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.button {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: #3dc2ff; // Light blue background color on hover
+  color: #fff; // White text color on hover
+}

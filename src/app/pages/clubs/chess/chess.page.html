@@ -1,0 +1,35 @@
+<ion-content [fullscreen]="true" class="bg-image">
+  <div class="welcome-section">
+    <h2 class="welcome-title">Welcome to the Chess Club!</h2>
+    <p class="welcome-text">
+      Dear student, we are excited to have you join the Chess Club. Chess is a strategic and intellectually stimulating
+      game that offers numerous benefits, including improved critical thinking, decision-making, and concentration
+      skills. In our club, you'll have the opportunity to learn, practice, and compete with fellow chess enthusiasts.
+      Check out the upcoming events below and join us for an enjoyable and challenging experience!
+    </p>
+    <ion-button *ngIf="!leader" (click)="registerNewClub()" color="dark">Register</ion-button>
+  </div>
+  <ion-button (click)="openModal()" *ngIf="leader">
+    Add Events
+  </ion-button>
+  <div *ngFor="let product of events ; let i=index;">
+
+    <ion-button (click)="goToDetails(product,i)" fill="clear">
+      <ion-card>
+        <ion-card-header>
+
+          <ion-card-title class="title">{{ product.name }}</ion-card-title>
+          <ion-card-subtitle class="subtitle">{{ product.club_name }}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-img src="{{product.photoUrl}}"></ion-img>
+          <ion-label>{{ ds.date[i] }}</ion-label><br>
+          <ion-label>{{ ds.time[i] }}</ion-label><br>
+        </ion-card-content>
+      </ion-card>
+    </ion-button>
+  </div>
+  <!-- Your component template -->
+
+
+</ion-content>

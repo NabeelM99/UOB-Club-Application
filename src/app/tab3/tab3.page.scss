@@ -1,0 +1,63 @@
+ion-toolbar {
+    --background: linear-gradient(to left, rgb(218, 218, 218), rgb(255, 255, 255));
+    color: rgb(0, 0, 0);
+}
+
+.req{
+    --background: linear-gradient(to bottom, rgb(218, 218, 218), rgb(255, 255, 255));
+
+}
+
+.requests{
+        --background: linear-gradient(to bottom, rgb(218, 218, 218), rgb(255, 255, 255));
+}
+
+ion-content {
+    --background: #ffffff;
+    /* Content background color */
+    --color: #000000;
+    /* Content text color */
+}
+
+ion-segment {
+    display: flex;
+    flex-direction: column;
+  }
+
+ion-segment-button {
+        --color: #000000;
+        font-size: 16px; 
+        flex-grow: 1;
+}
+
+ion-segment-button.segment-activated {
+    --color: #ffffff;
+    --background: #302a2a;
+}
+
+ion-item {
+    --color: #000000;
+    /* Item text color */
+}
+
+ion-button {
+    --color: #ffffff;
+    /* Button text color */
+    --background: #302a2a;
+    /* Button background color */
+    margin-top: 10px;
+    /* Add margin between buttons */
+}
+
+ion-button:hover {
+    --background: #000000;
+    /* Button background color on hover */
+}
+
+.segment-content {
+    flex-grow: 1;
+    overflow: auto; /* Enable scrolling if content overflows */
+  }
+
+
+

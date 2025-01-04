@@ -1,0 +1,35 @@
+
+<!--<ion-toolbar><ion-button slot="end" (click)="showMembers()">Show members</ion-button>  </ion-toolbar>-->
+<ion-content [fullscreen]="true" class="bgimg">
+  <div class="welcome-section">
+    <h2 class="welcome-title">Welcome to Sports Events!</h2>
+    <p class="welcome-text">
+      Welcome to the Sports Events page, where you can immerse yourself in the world of sports and athletic competitions. Whether you're a sports enthusiast, a dedicated athlete, or simply enjoy the thrill of watching live games, this is the place to be. From exhilarating matches to championship tournaments, we bring you a wide range of sporting events and activities. Join us to witness incredible displays of skill, teamwork, and passion across a variety of sports. Check out the upcoming events below and get ready to experience the excitement of sports!
+    </p>
+    <ion-button *ngIf="!leader" (click)="registerNewClub()" color="success">Register</ion-button>
+  </div>
+  
+  <ion-button (click)="openModal()" *ngIf="leader">
+    Add Events
+  </ion-button>
+    <div *ngFor="let product of events ; let i=index;">
+     
+      <ion-button (click)="goToDetails(product,i)" fill="clear">
+        <ion-card>
+          <ion-card-header>
+  
+            <ion-card-title class="title">{{ product.name }}</ion-card-title>
+            <ion-card-subtitle class="subtitle">{{ product.club_name }}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-img src="{{product.photoUrl}}"></ion-img>
+            <ion-label>{{ ds.date[i] }}</ion-label><br>
+            <ion-label>{{ ds.time[i] }}</ion-label><br>
+          </ion-card-content>
+        </ion-card>
+      </ion-button>
+    </div>
+    <!-- Your component template -->
+  
+  
+  </ion-content>

@@ -1,0 +1,36 @@
+
+  <!--<ion-toolbar><ion-button slot="end" (click)="showMembers()">Show members</ion-button>  </ion-toolbar>-->
+
+<ion-content [fullscreen]="true" class="theatreimg">
+  <div class="welcome-section">
+    <h2 class="welcome-title">Welcome to Theater Events!</h2>
+    <p class="welcome-text">
+      Welcome to the Theater Events page, where the magic of live performances comes to life. Immerse yourself in the world of theater and experience captivating stories, mesmerizing acting, and breathtaking stage productions. From classic plays to modern dramas, musicals to avant-garde performances, our theater events showcase the diversity and artistry of the performing arts. Join us as we celebrate the talent and creativity of actors, directors, and playwrights. Explore the upcoming events below and be prepared to be transported to a world of imagination and wonder!
+    </p>
+    
+    <ion-button *ngIf="!leader" (click)="registerNewClub()" class="theabtn">Register</ion-button>
+  </div>
+
+  <ion-button (click)="openModal()" *ngIf="leader" class="theabtn1">
+    Add Events
+  </ion-button>
+
+  <div *ngFor="let product of events ; let i=index;">
+    <ion-button (click)="goToDetails(product,i)" fill="clear">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title class="title">{{ product.name }}</ion-card-title>
+          <ion-card-subtitle class="subtitle">{{ product.club_name }}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-img src="{{product.photoUrl}}"></ion-img>
+          <ion-label>{{ ds.date[i] }}</ion-label><br>
+          <ion-label>{{ ds.time[i] }}</ion-label><br>
+        </ion-card-content>
+      </ion-card>
+    </ion-button>
+  </div>
+  <!-- Your component template -->
+
+
+</ion-content>

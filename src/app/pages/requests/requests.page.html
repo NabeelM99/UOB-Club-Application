@@ -1,0 +1,49 @@
+<ion-header class="background" [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title class="color" align="center">
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="background" [fullscreen]="true">
+
+  <!-- profile.page.html -->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Requested Student</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="profile-container">
+    <div class="profile-image">
+    </div>
+    <div class="profile-details" *ngFor="let x of userRecord">
+      <img src="{{x.photoUrl}}" alt="Profile Image">
+      <h2> {{x.name}}</h2>
+      <p>{{x.field}}</p>
+      <p>{{x.email}}</p>
+      <div *ngIf="ev">
+      <ion-label>Requested Event :{{newRequest}} </ion-label><br>
+      <ion-button (click)="approveRequest2()"> 
+        Approve
+      </ion-button>
+      <ion-button (click)="refuse2()"> 
+        Refuse
+      </ion-button>
+      </div>
+      <div *ngIf="!ev">
+      <ion-button (click)="approveRequest()"> 
+        Approve
+      </ion-button>
+      <ion-button (click)="refuse()"> 
+        Refuse
+      </ion-button>
+    </div>
+    </div>
+  </div>
+</ion-content>
+</ion-content>

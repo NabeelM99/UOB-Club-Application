@@ -1,0 +1,47 @@
+ion-content,
+ion-title,
+ion-button,
+ion-input,
+h2 {
+  color: #000000 !important;
+}
+
+.backgimgg {
+  --background: linear-gradient(to bottom, rgb(218, 218, 218), rgb(255, 255, 255));
+}
+
+.colbtn{
+    margin-left: 6%;
+    margin-right: 6%;
+}
+
+
+/* Add these styles to your component's CSS or global styles */
+.header-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.welcome-section {
+  margin: 20px;
+}
+
+.welcome-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 20px;
+}
+
+.welcome-text {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.subtitle {
+  font-style: italic;
+}

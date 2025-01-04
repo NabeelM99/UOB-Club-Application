@@ -1,17 +1,195 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content [fullscreen]="true" padding class="background-image" no scroll padding>
+  <div *ngIf="admins">
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <ion-content class="background" [fullscreen]="true" class="background-image" no scroll padding>
+      <section class="log">
+        <ion-label class="note">New Club</ion-label>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+        <form [formGroup]="signInForm" (ngSubmit)="addEvent()" class="form">
+          <ion-item class="input-item">
+            <ion-label class="label" position="floating">Club Name</ion-label>
+            <ion-input (input)="subName()" type="text" formControlName="name" class="input"></ion-input>
+          </ion-item>
+
+          <div *ngIf="submitted && f['name'].errors" class="error-container">
+            <div class="error" *ngIf="f['name'].errors['required']">
+              *name is required
+            </div>
+            <div class="error" *ngIf="f['name']">
+              *name is short
+            </div>
+          </div>
+
+
+
+          <ion-item class="input-item">
+            <ion-label class="label">Club Leader</ion-label>
+            <ion-select formControlName="leader" class="input">
+              <ion-select-option *ngFor="let leader of leaders" [value]="leader.name">{{ leader.name
+                }}</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <div *ngIf="submitted3 && f['leader'].errors" class="error-container">
+            <div class="error" *ngIf="f['leader'].errors['required']">
+              *Club Leader is required
+            </div>
+          </div>
+
+
+          <ion-item class="input-item">
+            <ion-label class="label" position="floating">Club Overview</ion-label>
+            <ion-input (input)="subInfo()" type="text" formControlName="info" class="input"></ion-input>
+          </ion-item>
+          <div *ngIf="submitted6 && f['info'].errors" class="error-container">
+            <div class="error" *ngIf="f['info'].errors['required']">
+              *overview is required
+            </div>
+            <div class="error" *ngIf="f['info']">
+              *overview is short
+            </div>
+          </div>
+          <ion-button class="button" fill="clear" [disabled]="!signInForm.valid" type="submit" color="dark">Add Events</ion-button>
+        </form>
+      </section>
+    </ion-content>
+  </div>
+
+
+
+  <div *ngIf="!admins">
+    <div *ngIf="loaded">
+      
+
+      <div *ngIf="load">
+        <div *ngIf="!leader">
+          <div *ngIf="!registered">
+            <div class="one">
+              <h1>Explore Our CLUBS</h1>
+            </div>
+            <div class="cont" *ngFor="let page of pages">
+              <ion-button (click)="goToPage(page.route)" fill="clear">
+                <div class="box1">
+                  <ion-img [src]="page.imagePath"></ion-img>
+                </div>
+              </ion-button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="registered">
+        <ion-button *ngIf="!leader" (click)="leaveClub()"> Leave Club</ion-button>
+        <div class="welcome-section">
+          <div class="welcome-title">
+            <h2 *ngIf="!title" class="h2tab1">Welcome {{clubName}} Club Members!</h2>
+          </div>
+          <h2 *ngIf="title" class="welcome-title">Welcome, {{college}} Students!</h2>
+
+          <p *ngIf="chess" class="welcome-text">
+            Dear student, we are excited to have you join the Chess Club. Chess is a strategic and intellectually
+            stimulating game that offers numerous benefits, including improved critical thinking, decision-making, and
+            concentration skills. In our club, you'll have the opportunity to learn, practice, and compete with fellow
+            chess enthusiasts. Check out the upcoming events below and join us for an enjoyable and challenging
+            experience!
+          </p>
+          <p *ngIf="environment" class="welcome-text">
+            Dear student, welcome to the Environment Events page. Here, you will find a collection of events related to
+            the environment, sustainability, and conservation. We believe in raising awareness and taking action to
+            protect our planet. Join us in these events to learn, contribute, and make a positive impact on the
+            environment. Check out the upcoming events below and be part of the change!
+          </p>
+          <p *ngIf="fineArts" class="welcome-text">
+            Dear student, welcome to the Fine Arts Events page. Here, you will find a collection of events related to
+            various forms of art, including painting, sculpture, music, dance, and more. Immerse yourself in the world
+            of creativity, expression, and aesthetic beauty. Join us in these events to appreciate and celebrate the
+            diverse talents of our artistic community. Check out the upcoming events below and get ready to be inspired!
+          </p>
+          <p *ngIf="graduates" class="welcome-text">
+            Congratulations, graduates! This page is dedicated to celebrating your achievements and providing you with
+            opportunities to connect and engage with fellow graduates. Here, you will find a collection of events
+            specially curated for graduates like you. From networking events to career fairs, alumni reunions to
+            professional development workshops, we strive to support your continued success after graduation. Explore
+            the upcoming events below and make the most of your post-graduation journey!
+          </p>
+          <p *ngIf="music" class="welcome-text">
+            Welcome to the Music Events page, where you can find a variety of events dedicated to the world of music.
+            Whether you're a music enthusiast, performer, or simply looking to enjoy some melodious tunes, this is the
+            place to be. Join us in celebrating the magic of music through concerts, music festivals, workshops, and
+            more. Immerse yourself in the rhythm, harmony, and creativity of musical performances. Check out the
+            upcoming events below and get ready to experience the power of music!
+          </p>
+          <p *ngIf="photography" class="welcome-text">
+            Welcome to the Photography Events page, where you can explore a world of creativity through the lens.
+            Whether you're a professional photographer or an enthusiastic beginner, this is the perfect place to
+            discover and engage with photography events. From photo walks and workshops to exhibitions and competitions,
+            we offer a range of opportunities to expand your skills, showcase your work, and connect with fellow
+            photography enthusiasts. Browse through the upcoming events below and embark on a visual journey like no
+            other!
+          </p>
+          <p *ngIf="sports" class="welcome-text">
+            Welcome to the Sports Events page, where you can immerse yourself in the world of sports and athletic
+            competitions. Whether you're a sports enthusiast, a dedicated athlete, or simply enjoy the thrill of
+            watching live games, this is the place to be. From exhilarating matches to championship tournaments, we
+            bring you a wide range of sporting events and activities. Join us to witness incredible displays of skill,
+            teamwork, and passion across a variety of sports. Check out the upcoming events below and get ready to
+            experience the excitement of sports!
+          </p>
+          <p *ngIf="theater" class="welcome-text">
+            Welcome to the Theater Events page, where the magic of live performances comes to life. Immerse yourself in
+            the world of theater and experience captivating stories, mesmerizing acting, and breathtaking stage
+            productions. From classic plays to modern dramas, musicals to avant-garde performances, our theater events
+            showcase the diversity and artistry of the performing arts. Join us as we celebrate the talent and
+            creativity of actors, directors, and playwrights. Explore the upcoming events below and be prepared to be
+            transported to a world of imagination and wonder!
+          </p>
+          <p *ngIf="volunteering" class="welcome-text">
+            Welcome to the Volunteering Events page, where you can make a positive impact on the community and
+            contribute to meaningful causes. Volunteering is a powerful way to give back, connect with others, and
+            create a better world. Join us as we engage in various volunteer activities, ranging from environmental
+            conservation to social outreach. Together, we can make a difference and inspire change. Explore the upcoming
+            events below and find opportunities to lend a helping hand. Let's work together to create a brighter future!
+          </p>
+        </div>
+
+        
+        <div *ngIf="load">
+
+          <ion-button *ngIf="!notLeader" (click)="collegeEvents()" expand="block" class="btntab">Go To College Events</ion-button>
+          <div *ngIf="notLeader">
+            <ion-button (click)="goToCollege()" expand="block" color="dark" class="btntab">
+              Manage College Events
+            </ion-button>
+          </div>
+          <div *ngIf="notreg">
+            <ion-button *ngIf="showmem" slot="end" (click)="showMembers()" expand="block" class="btntab" color="dark">Show members</ion-button>
+          </div>
+          <div *ngIf="notLeader">
+            <ion-button *ngIf="leader2" (click)="manageClub()" expand="block" class="btntab" color="dark">manage Club</ion-button>
+          </div>
+        </div>
+        <!--<ion-button (click)="openModal()" *ngIf="leader">
+          Add Events
+        </ion-button>-->
+        <div *ngFor="let product of events ; let i=index;">
+
+          <ion-button (click)="goToDetails(product,i)" fill="clear">
+            <ion-card>
+              <ion-card-header>
+
+                <ion-card-title class="title">{{ product.name }}</ion-card-title>
+                <ion-card-subtitle class="subtitle">{{ product.club_name }}</ion-card-subtitle>
+              </ion-card-header>
+              <ion-card-content>
+                <ion-img src="{{product.photoUrl}}"></ion-img>
+                <ion-label>{{ ds.date[i] }}</ion-label><br>
+                <ion-label>{{ ds.time[i] }}</ion-label><br>
+              </ion-card-content>
+            </ion-card>
+          </ion-button>
+        </div>
+        <!-- Your component template -->
+      </div>
+      <!--<ion-button (click)="gotop()">go to p</ion-button>
+-->
+    </div>
+  </div>
 </ion-content>

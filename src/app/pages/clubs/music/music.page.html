@@ -1,0 +1,39 @@
+<!--<ion-toolbar><ion-button slot="end" (click)="showMembers()">Show members</ion-button></ion-toolbar>-->
+<ion-content [fullscreen]="true" class="bg-img">
+  <div class="welcome-section">
+    <h2 class="welcome-title">Welcome to Music Events!</h2>
+    <p class="welcome-text">
+      Welcome to the Music Events page, where you can find a variety of events dedicated to the world of music. Whether
+      you're a music enthusiast, performer, or simply looking to enjoy some melodious tunes, this is the place to be.
+      Join us in celebrating the magic of music through concerts, music festivals, workshops, and more. Immerse yourself
+      in the rhythm, harmony, and creativity of musical performances. Check out the upcoming events below and get ready
+      to experience the power of music!
+    </p>
+    <ion-button *ngIf="!leader" (click)="registerNewClub()" color="dark">Register</ion-button>
+
+  </div>
+
+  <ion-button (click)="openModal()" *ngIf="leader">
+    Add Events
+  </ion-button>
+  <div *ngFor="let product of events ; let i=index;">
+
+    <ion-button (click)="goToDetails(product,i)" fill="clear">
+      <ion-card>
+        <ion-card-header>
+
+          <ion-card-title class="title">{{ product.name }}</ion-card-title>
+          <ion-card-subtitle class="subtitle">{{ product.club_name }}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-img src="{{product.photoUrl}}"></ion-img>
+          <ion-label>{{ ds.date[i] }}</ion-label><br>
+          <ion-label>{{ ds.time[i] }}</ion-label><br>
+        </ion-card-content>
+      </ion-card>
+    </ion-button>
+  </div>
+  <!-- Your component template -->
+
+
+</ion-content>

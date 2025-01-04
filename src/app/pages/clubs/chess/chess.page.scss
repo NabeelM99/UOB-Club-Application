@@ -1,0 +1,54 @@
+/* Add these styles to your component's CSS or global styles */
+ion-content,
+ion-title,
+ion-button,
+ion-input,
+h1 {
+  color: #000000 !important;
+}
+
+h2, p{
+  color: white;
+}
+
+.bg-image {
+  --background: url('/assets/images/chessbg1.jpg') fixed center/cover;
+}
+
+ion-card {
+  height: 440px;
+  width: 300px;
+}
+
+ion-card-title {
+  white-space: normal;
+}
+
+.header-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.welcome-section {
+  margin: 20px;
+}
+
+.welcome-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.welcome-text {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.subtitle {
+  font-style: italic;
+}

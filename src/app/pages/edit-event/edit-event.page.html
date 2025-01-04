@@ -1,0 +1,114 @@
+<ion-header class="background" [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="color" align="center">
+      Sign in
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="background" [fullscreen]="true">
+
+    <!-- Rest of the code -->
+    <section class="log">
+      
+
+    <ion-label class="note">Edit Event Information</ion-label>
+    <form  [formGroup]="signInForm" (ngSubmit)="editEvent()" class="form">
+      <ion-item class="input-item">
+        <ion-label class="label" floating>Event Name</ion-label>
+        <ion-input placeholder="" (input)="subName()" type="text" formControlName="name" class="input"></ion-input>
+      </ion-item>
+      <div *ngIf="submitted && f['name'].errors" class="error-container">
+        <div class="error" *ngIf="f['name'].errors['required']">
+          *name is required
+        </div>
+        <div class="error" *ngIf="f['name']">
+          *name is short
+        </div>
+      </div>
+
+      <ion-item class="input-item">
+        <ion-label class="label" floating>Date and Time</ion-label>
+        <ion-input  (input)="subPassword()" type="datetime-local" formControlName="date" min="{{ getCurrentDateTime() }}" class="input"></ion-input>
+      </ion-item>
+      <div *ngIf="submitted2 && f['date'].errors" class="error-container">
+        <div class="error" *ngIf="f['date'].errors['required']">
+          *Date and Time are required
+        </div>
+      </div>
+
+      <ion-item class="input-item">
+        <ion-label class="label" floating>Location</ion-label>
+        <ion-select (ionChange)="subLocation()" formControlName="location">
+          <ion-select-option value="sportsHall"  >Sports Hall</ion-select-option>
+          <ion-select-option value="uobGarden"  >UOB Garden</ion-select-option>
+          <ion-select-option value="openLab1002"  >Open Lab 1002</ion-select-option>
+          <ion-select-option value="s40-benefitLab" >S40 - Benefit Lab</ion-select-option>
+          <ion-select-option value="s40" disabled>S40</ion-select-option>
+          <ion-select-option value="s40-1045" >S40-1045</ion-select-option>
+          <ion-select-option value="s40-2068" >S40-1042</ion-select-option>
+          <ion-select-option value="s40-2068" >S40-1043</ion-select-option>
+          <ion-select-option value="s40-2068" >S40-2045</ion-select-option>
+          <ion-select-option value="s40-2068" >S40-057</ion-select-option>
+          <ion-select-option value="s40-2068" >S40-2068</ion-select-option>
+          <ion-select-option value="s40-2068" >S40-2049</ion-select-option>
+          <ion-select-option value="s40-2068" >S40-2050</ion-select-option>
+          <ion-select-option value="s40-2068" >S40-2060</ion-select-option>
+          <ion-select-option value="s50" disabled >S50</ion-select-option>
+          <ion-select-option value="s50-01"  >S50-01</ion-select-option>
+          <ion-select-option value="s50-02"  >S50-02</ion-select-option>
+          <ion-select-option value="s48" disabled >S48</ion-select-option>
+          <ion-select-option value="s48-01"  >S48-01</ion-select-option>
+          <ion-select-option value="s48-02"  >S48-02</ion-select-option>
+          <ion-select-option value="s48" disabled >S47</ion-select-option>
+          <ion-select-option value="s47-01"  >S47-01</ion-select-option>
+          <ion-select-option value="s47-02"  >S47-02</ion-select-option>
+          <ion-select-option value="s6"  >S6</ion-select-option>
+          <ion-select-option value="s18"  >S18</ion-select-option>
+          <ion-select-option value="tba"  >TBA</ion-select-option>
+
+        </ion-select>
+      </ion-item>
+      <div *ngIf="submitted3 && f['location'].errors" class="error-container">
+        <div class="error" *ngIf="f['location'].errors['required']">
+          *Location is required
+        </div>
+      </div>
+
+      <ion-item class="input-item">
+        <ion-label class="label" floating>Type</ion-label>
+        <ion-select (ionChange)="subType()" formControlName="type">
+          <ion-select-option value="clubOnly">Club Members Only</ion-select-option>
+          <ion-select-option value="forAll">For All Students</ion-select-option>
+          <ion-select-option value="registration">Limited Seats (Registration)</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <div *ngIf="submitted4 && f['type'].errors" class="error-container">
+        <div class="error" *ngIf="f['type'].errors['required']">
+          *Type is required
+        </div>
+      </div>
+      <ion-item class="input-item">
+        <ion-label class="label" floating>Photo</ion-label>
+        <input type="file" (change)="handleFileInput($event)" class="input-file" formControlName="photo">
+      </ion-item>
+   
+
+      <ion-item class="input-item">
+        <ion-label class="label" floating>Event Overview</ion-label>
+        <ion-input placeholder="" (input)="subInfo()" type="text" formControlName="info" class="input"></ion-input>
+      </ion-item>
+      <div *ngIf="submitted6 && f['info'].errors" class="error-container">
+        <div class="error" *ngIf="f['info'].errors['required']">
+          *overview is required
+        </div>
+        <div class="error" *ngIf="f['info']">
+          *overview is short
+        </div>
+      </div>
+      <ion-button class="button" fill="clear" [disabled]="!signInForm.valid" type="submit">Edit Events</ion-button>
+      <ion-button (click)="close()">close</ion-button>
+    </form> 
+  </section>
+
+</ion-content>

@@ -1,0 +1,134 @@
+ion-content,
+ion-title,
+ion-button,
+ion-input,
+h1, h2, ion-back-button {
+  color: #000000 !important;
+}
+
+.profile1{
+    --background: linear-gradient(to bottom, rgb(218, 218, 218), rgb(255, 255, 255));
+}
+
+ion-back-button{
+  position: fixed;
+  padding-top: 5px;
+}
+
+.background {
+    background-color: #302a2a;
+    color: #302a2a;
+  }
+  
+  .color1 {
+    color: #333;
+    padding-right: 50px;
+  }
+  
+  .log {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  
+  .logo {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 20px;
+  }
+  
+  .note {
+    margin-bottom: 20px;
+  }
+  
+  .form {
+    width: 300px;
+    margin-bottom: 20px;
+  }
+  
+  .input-item {
+    margin-bottom: 16px;
+  }
+  
+  .label {
+    color: #666;
+  }
+  
+  .input {
+    padding: 10px;
+  }
+  
+  .input-hover {
+    border-color: #999;
+  }
+  
+  .error-container {
+    margin-top: 8px;
+  }
+  
+  .error {
+    color: red;
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+  
+  .button {
+    margin-bottom: 16px;
+  }
+  
+  .button-hover {
+    background-color: #ccc;
+    color: #333;
+  }
+  
+  .note {
+    font-size: 12px;
+  }
+  
+  /* Mouse movement effects */
+  .input:hover {
+    border-color: #999;
+  }
+  
+  .button:hover {
+    background-color: #ccc;
+    color: #333;
+  }
+  
+  .button:active {
+    background-color: #999;
+    color: #fff;
+  }
+  
+  .input-item:hover .error-container {
+    display: none;
+  }
+  /* profile.page.scss */
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.profile-image img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+.profile-details h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.profile-details p {
+  font-size: 16px;
+  color: #888888;
+  margin-bottom: 10px;
+}

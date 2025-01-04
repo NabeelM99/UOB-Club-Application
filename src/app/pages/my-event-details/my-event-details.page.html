@@ -1,0 +1,69 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-button slot="start" (click)="goBack()" >
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>My events</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div *ngIf="loaded">
+
+  <div class="container"  *ngIf="record">
+    <ion-img [src]="record.photoUrl"></ion-img>    
+    <h1>{{ record.name }}</h1>
+    <ion-button (click)="showMembers()">show members</ion-button>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="1">
+          <ion-icon name="business-outline"></ion-icon></ion-col>
+        <ion-col size="8">{{record.location}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col> {{record.club_name}} Club </ion-col>
+      </ion-row>
+      <ion-row class="mt-3 mb-3">
+        <ion-col>
+          <div class="box">
+            <div> Date :</div>
+            <div>{{ds.date[0]}}</div>
+            <div>{{ds.time[0]}}</div>
+          </div>
+        </ion-col>
+       
+      </ion-row>
+    </ion-grid>
+
+  <div class="container">
+    <p>{{record.overview}}</p>
+  </div>
+  <div class="container">
+    <h2>Type</h2>
+    <ion-label>{{eventType}}</ion-label><br>
+    <div *ngIf="!created">
+    <ion-item>
+    <ion-label class="label"> Send Feedback:</ion-label>
+    <ion-input [(ngModel)]="feed" (input)="changeFeed()" type="text"></ion-input>
+    </ion-item>
+    <ion-button (click)="Rating(i)" *ngFor="let star of datas.Rate; let i=index" style="color:rgb(231, 231, 186);;" fill="clear"><ion-icon class="icon" name="{{star.Name}}"></ion-icon></ion-button><br>
+    <ion-label *ngFor="let star of [0,1,2,3,4]; let i=index" style="color:rgb(231, 231, 186);;" fill="clear"><ion-icon class="icon" name="star"></ion-icon></ion-label><ion-label>{{four}}</ion-label><br>
+    <ion-label  *ngFor="let star of [0,1,2,3]; let i=index" style="color:rgb(231, 231, 186);;" fill="clear"><ion-icon class="icon" name="star"></ion-icon></ion-label><ion-label>{{three}}</ion-label><br>
+    <ion-label  *ngFor="let star of [0,1,2]; let i=index" style="color:rgb(231, 231, 186);;" fill="clear"><ion-icon class="icon" name="star"></ion-icon></ion-label><ion-label>{{two}}</ion-label><br>
+    <ion-label  *ngFor="let star of [0,1]; let i=index" style="color:rgb(231, 231, 186);;" fill="clear"><ion-icon class="icon" name="star"></ion-icon></ion-label><ion-label>{{one}}</ion-label><br>
+    <ion-label *ngFor="let star of [0]; let i=index" style="color:rgb(231, 231, 186);;" fill="clear"><ion-icon class="icon" name="star"></ion-icon></ion-label><ion-label>{{zero}}</ion-label><br>
+<ion-button (click)="sendFeedback()" [disabled]="!showz"  class="changeB" fill="clear">Send Feedback</ion-button>
+    </div>
+<ion-button *ngIf="created" (click)="removeEvent(record)"  expand="block" type="button" >
+  Remove
+</ion-button>
+<ion-button  (click)="showFeedbacks(record)"  expand="block" type="button" >
+  Show Feedbacks
+</ion-button>
+  </div>
+</div>
+  </div>
+
+</ion-content>

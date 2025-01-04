@@ -1,0 +1,45 @@
+
+
+<ion-content [fullscreen]="true" class="stuinfo">
+  <div *ngIf="club">
+  <div class="profile-details" *ngFor="let x of userRecord">
+    <img src="{{x.photoUrl}}" alt="Profile Image">
+    <h2> {{x.name}}</h2>
+    <p>{{x.field}}</p>
+    <p>{{x.email}}</p>
+    <div *ngIf="!theLeader">
+ <div *ngIf="isLeader">
+  <ion-button (click)="removeUser()">
+    Remove User
+  </ion-button>
+ </div>
+  </div>
+</div>
+</div>
+<div *ngIf="event">
+<div class="profile-details" *ngFor="let x of userRecord">
+  <img src="{{x.photoUrl}}" alt="Profile Image">
+  <h2> {{x.name}}</h2>
+  <p>{{x.field}}</p>
+  <p>{{x.email}}</p>
+<div *ngIf="isLeader2">
+<ion-button (click)="removeUser2()">
+  Remove User
+</ion-button>
+</div>
+</div>
+</div>
+<div *ngIf="college">
+  <div class="profile-details" *ngFor="let x of userRecord">
+    <img src="{{x.photoUrl}}" alt="Profile Image">
+    <h2> {{x.name}}</h2>
+    <p>{{x.field}}</p>
+    <p>{{x.email}}</p>
+  <div *ngIf="isLeader2">
+  <ion-button (click)="removeUser2()">
+    Remove User
+  </ion-button>
+  </div>
+  </div>
+  </div>
+</ion-content>

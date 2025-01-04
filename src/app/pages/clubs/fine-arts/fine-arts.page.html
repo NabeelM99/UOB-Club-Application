@@ -1,0 +1,36 @@
+
+<!-- <ion-toolbar><ion-button slot="end" (click)="showMembers()">Show members</ion-toolbar></ion-button>-->
+<ion-content [fullscreen]="true" class="fineartimg">
+  <div class="welcome-section">
+    <h2 class="welcome-title">Welcome to Fine Arts Events!</h2>
+    <p class="welcome-text">
+      Dear student, welcome to the Fine Arts Events page. Here, you will find a collection of events related to various forms of art, including painting, sculpture, music, dance, and more. Immerse yourself in the world of creativity, expression, and aesthetic beauty. Join us in these events to appreciate and celebrate the diverse talents of our artistic community. Check out the upcoming events below and get ready to be inspired!
+    </p>
+    <ion-button *ngIf="!leader" (click)="registerNewClub()" class="fartbtn">Register</ion-button>
+    
+
+  </div>
+  <ion-button (click)="openModal()" *ngIf="leader">
+    Add Events
+  </ion-button>
+    <div *ngFor="let product of events ; let i=index;">
+     
+      <ion-button (click)="goToDetails(product,i)" fill="clear">
+        <ion-card>
+          <ion-card-header>
+  
+            <ion-card-title class="title">{{ product.name }}</ion-card-title>
+            <ion-card-subtitle class="subtitle">{{ product.club_name }}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-img src="{{product.photoUrl}}"></ion-img>
+            <ion-label>{{ ds.date[i] }}</ion-label><br>
+            <ion-label>{{ ds.time[i] }}</ion-label><br>
+          </ion-card-content>
+        </ion-card>
+      </ion-button>
+    </div>
+    <!-- Your component template -->
+  
+  
+  </ion-content>

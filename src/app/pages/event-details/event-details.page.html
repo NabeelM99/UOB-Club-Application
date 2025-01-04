@@ -1,0 +1,73 @@
+<ion-content [fullscreen]="true" class="evtdtll">
+  <div *ngIf="loaded">
+    <div class="container" *ngIf="record">
+      <ion-img src="{{record.photoUrl}}"></ion-img>
+      <h1>{{ record.name }}</h1>
+      <ion-button (click)="showMembers(record.name)" color="">show members</ion-button>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="1">
+            <ion-icon name="business-outline"></ion-icon></ion-col>
+          <ion-col size="8">{{record.location}}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col> {{record.club_name}} Club </ion-col>
+        </ion-row>
+        <ion-row class="mt-3 mb-3">
+          <ion-col>
+            <div class="box">
+              <div> Date :</div>
+              <div>{{ds.date[0]}}</div>
+              <div> Time :</div>
+              <div>{{ds.time[0]}}</div>
+            </div>
+          </ion-col>
+
+        </ion-row>
+      </ion-grid>
+
+      <div class="container">
+        <p>{{record.overview}}</p>
+        <p>{{createdDr}} invites you to attend</p>
+      </div>
+      <div class="container">
+        <h2>Type</h2>
+        <ion-label>{{eventType}}</ion-label>
+        <div *ngIf="!alreadyReg">
+          <ion-button *ngIf="!bails" (click)="Register()" [ngClass]="{'hidden':isLeader}" expand="block" type="button"
+            color="medium">
+            Register
+          </ion-button>
+          <ion-button *ngIf="bails" (click)="bailing()" [ngClass]="{'hidden':isLeader}" expand="block" type="button"
+            color="danger">
+            Unregister
+          </ion-button>
+        </div>
+        <div *ngIf="edit">
+          <div *ngIf="iamleader">
+            <ion-button *ngIf="isLeader" (click)="editEvent(record)" expand="block" type="button" color="dark">
+              Edit
+            </ion-button>
+            <ion-button *ngIf="isLeader" (click)="removeEvent(record)" expand="block" type="button" color="danger">
+              Remove
+            </ion-button>
+          </div>
+        </div>
+        <div *ngIf="tab1">
+          <ion-button *ngIf="isLeader" (click)="editEvent(record)" expand="block" type="button" color="dark">
+            Edit
+          </ion-button>
+          <ion-button *ngIf="isLeader" (click)="removeEvent(record)" expand="block" type="button" color="danger">
+            Remove
+          </ion-button>
+        </div>
+        <ion-button *ngIf="created" (click)="removeEvent(record)" expand="block" type="button" color="danger">
+          Remove
+        </ion-button>
+        <ion-button *ngIf="alreadyReg" (click)="cancelRequest()" expand="block" type="button" color="danger">
+          cancel request
+        </ion-button>
+      </div>
+    </div>
+  </div>
+</ion-content>

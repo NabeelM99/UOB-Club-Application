@@ -1,0 +1,38 @@
+
+<!--<ion-toolbar><ion-button slot="end" (click)="showMembers()">Show members</ion-button>  </ion-toolbar>-->
+
+<ion-content [fullscreen]="true" class="volunimg">
+  <div class="welcome-section">
+    <h2 class="welcome-title">Welcome to Volunteering Events!</h2>
+    <p class="welcome-text">
+      Welcome to the Volunteering Events page, where you can make a positive impact on the community and contribute to meaningful causes. Volunteering is a powerful way to give back, connect with others, and create a better world. Join us as we engage in various volunteer activities, ranging from environmental conservation to social outreach. Together, we can make a difference and inspire change. Explore the upcoming events below and find opportunities to lend a helping hand. Let's work together to create a brighter future!
+    </p>
+    <ion-button *ngIf="!leader" (click)="registerNewClub()">Register</ion-button>
+
+  </div>
+
+ 
+<ion-button (click)="openModal()" *ngIf="leader">
+  Add Events
+</ion-button>
+  <div *ngFor="let product of events ; let i=index;">
+   
+    <ion-button (click)="goToDetails(product,i)" fill="clear">
+      <ion-card>
+        <ion-card-header>
+
+          <ion-card-title class="title">{{ product.name }}</ion-card-title>
+          <ion-card-subtitle class="subtitle">{{ product.club_name }}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-img src="{{product.photoUrl}}"></ion-img>
+          <ion-label>{{ ds.date[i] }}</ion-label><br>
+          <ion-label>{{ ds.time[i] }}</ion-label><br>
+        </ion-card-content>
+      </ion-card>
+    </ion-button>
+  </div>
+  <!-- Your component template -->
+
+
+</ion-content>
